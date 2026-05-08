@@ -12,7 +12,25 @@
       background: #f4f6f9;
       color: #111;
     }
+    
+    .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
 
+.logo img {
+  height: 42px;
+  width: auto;
+  background: white;
+  padding: 4px 6px;
+  border-radius: 10px;
+}
+    
     nav {
       background: #0a1f44;
       padding: 15px 20px;
@@ -213,8 +231,10 @@
 
   <nav>
     <div class="nav-container">
-      <div class="logo">LITORAL GLOBAL</div>
-      <div>
+<div class="logo">
+  <img src="img/logo2.jpeg" alt="Logo Litoral Global">
+  <span>LITORAL GLOBAL</span>
+</div>
         <a href="#inicio">Inicio</a>
         <a href="#servicios">Servicios</a>
         <a href="#valores">Valores</a>
