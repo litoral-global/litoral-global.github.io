@@ -114,6 +114,103 @@
       background: #009e7e;
     }
 
+    .btn-popup {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 14px 26px;
+  background: #ffcc00;
+  color: #0a1f44;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+.btn-popup:hover {
+  background: #ffdb4d;
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.popup-content {
+  background: white;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 35px;
+  position: relative;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  color: #0a1f44;
+  font-size: 28px;
+}
+
+.popup-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #222;
+}
+
+.popup-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 34px;
+  cursor: pointer;
+  color: #0a1f44;
+  font-weight: bold;
+}
+
+.popup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.popup-card {
+  background: #f4f6f9;
+  padding: 18px;
+  border-radius: 12px;
+  border-left: 5px solid #0a1f44;
+}
+
+.popup-card h3 {
+  margin-top: 0;
+  color: #0a1f44;
+  font-size: 17px;
+}
+
+.popup-whatsapp {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 26px;
+  background: #00b894;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+}
     .container {
       max-width: 1100px;
       margin: auto;
@@ -251,6 +348,9 @@
       brindando asesoramiento estratégico, análisis de mercado y soporte operativo.
     </p>
     <a class="btn" href="#contacto">Solicitar asesoramiento</a>
+    <button class="btn-popup" onclick="openPopup()">
+  Internacionalizá tu empresa
+</button>
   </header>
 
   <div class="container">
@@ -357,5 +457,70 @@
     WhatsApp
   </a>
 
+ <div id="popup" class="popup-overlay">
+  <div class="popup-content">
+    <span class="popup-close" onclick="closePopup()">&times;</span>
+
+    <h2>Internacionalizá tu empresa de forma eficiente</h2>
+    <p>
+      En <b>Litoral Global</b> ayudamos a empresas a expandirse al mercado internacional con un enfoque estratégico,
+      operativo y orientado a resultados.
+    </p>
+
+    <div class="popup-grid">
+      <div class="popup-card">
+        <h3>Diagnóstico inicial</h3>
+        <p>Evaluamos tu empresa, producto y potencial internacional para definir un camino realista.</p>
+      </div>
+
+      <div class="popup-card">
+        <h3>Selección de mercados destino</h3>
+        <p>Analizamos países objetivo, demanda, competencia y requisitos de entrada.</p>
+      </div>
+
+      <div class="popup-card">
+        <h3>Estrategia comercial</h3>
+        <p>Definimos canales, precios y modelo de negocio internacional adaptado a tu sector.</p>
+      </div>
+
+      <div class="popup-card">
+        <h3>Gestión operativa</h3>
+        <p>Documentación, logística internacional, costos y acompañamiento completo.</p>
+      </div>
+
+      <div class="popup-card">
+        <h3>Reducción de riesgos</h3>
+        <p>Simulación de costos y control de variables para evitar errores y pérdidas.</p>
+      </div>
+
+      <div class="popup-card">
+        <h3>Seguimiento continuo</h3>
+        <p>Asistencia y soporte para lograr una expansión sostenible y eficiente.</p>
+      </div>
+    </div>
+
+    <a class="popup-whatsapp" href="https://wa.me/549XXXXXXXXXX" target="_blank">
+      Contactar por WhatsApp
+    </a>
+  </div>
+</div>
+ <script>
+  function openPopup() {
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  // Cerrar popup si hacen click afuera
+  window.onclick = function(event) {
+    let popup = document.getElementById("popup");
+    if (event.target === popup) {
+      popup.style.display = "none";
+    }
+  }
+</script>
+  
 </body>
 </html>
