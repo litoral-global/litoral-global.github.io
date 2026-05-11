@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Litoral Global | International Trade Consulting</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f9;
+      color: #111;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    .logo img {
+      height: 42px;
+      width: auto;
+      background: white;
+      padding: 4px 6px;
+      border-radius: 10px;
+    }
+    
+    nav {
+      background: #0a1f44;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    nav .nav-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    header {
+      background-image: 
+        linear-gradient(rgba(10, 31, 68, 0.60), rgba(10, 31, 68, 0.85)),
+        url("mapa.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      padding: 85px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 46px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 18px;
+      font-size: 18px;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      opacity: 0.9;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 26px;
+      background: #00b894;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .btn:hover {
+      background: #009e7e;
+    }
+
+    .btn-popup {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 14px 26px;
+      background: #ffcc00;
+      color: #0a1f44;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    }
+
+    .btn-popup:hover {
+      background: #ffdb4d;
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .popup-content {
+      background: white;
+      max-width: 900px;
+      width: 100%;
+      border-radius: 16px;
+      padding: 35px;
+      position: relative;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .popup-content h2 {
+      margin-top: 0;
+      color: #0a1f44;
+      font-size: 28px;
+    }
+
+    .popup-content p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #222;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 34px;
+      cursor: pointer;
+      color: #0a1f44;
+      font-weight: bold;
+    }
+
+    .popup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .popup-card {
+      background: #f4f6f9;
+      padding: 18px;
+      border-radius: 12px;
+      border-left: 5px solid #0a1f44;
+    }
+
+    .popup-card h3 {
+      margin-top: 0;
+      color: #0a1f44;
+      font-size: 17px;
+    }
+
+    .popup-email {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 26px;
+      background: #0a1f44;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .popup-email:hover {
+      background: #112f66;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 55px 20px;
+    }
+
+    section {
+      margin-bottom: 65px;
+    }
+
+    h2 {
+      color: #0a1f44;
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #222;
+    }
+    
+    .btn-evaluacion {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 28px;
+      background: #00b894;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 15px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+
+    .btn-evaluacion:hover {
+      background: #009e7e;
+    }
+    
+    .cta-box {
+      margin-top: 40px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .cta-box h3 {
+      margin-top: 0;
+      color: #0a1f44;
+      font-size: 22px;
+    }
+
+    .cta-box p {
+      max-width: 700px;
+      margin: 12px auto 0 auto;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      border-top: 4px solid #0a1f44;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #0a1f44;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: #333;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .value-box {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    .value-box h3 {
+      margin-top: 0;
+      color: #0a1f44;
+    }
+
+    .contact-box {
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      border-left: 5px solid #00b894;
+    }
+
+    .contact-box p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+
+    .linkedin-link {
+      color: #0a1f44;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .linkedin-link:hover {
+      text-decoration: underline;
+    }
+
+    .linkedin-btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 24px;
+      background: #0a66c2;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .linkedin-btn:hover {
+      background: #004182;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #0a1f44;
+    }
+
+    footer {
+      background: #0a1f44;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      font-size: 14px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00b894;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-size: 14px;
+    }
+
+    .whatsapp-float:hover {
+      background: #009e7e;
+    }
+
+    @media (max-width: 768px) {
+
+      header {
+        padding: 65px 15px;
+      }
+
+      header h1 {
+        font-size: 34px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      nav .nav-container {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      nav a {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 14px;
+      }
+
+      .container {
+        padding: 40px 15px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .popup-content {
+        padding: 22px;
+      }
+
+      .popup-content h2 {
+        font-size: 22px;
+      }
+
+      .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 16px;
+        font-size: 13px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="logo2.jpeg" alt="Litoral Global Logo">
+        <span>LITORAL GLOBAL</span>
+      </div>
+
+      <div>
+        <a href="#inicio">Home</a>
+        <a href="#servicios">Services</a>
+        <a href="#proyectos">Projects</a>
+        <a href="#valores">Values</a>
+        <a href="#contacto">Contact</a>
+
+        <a href="index.html">ES</a>
+        <a href="en.html">EN</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="inicio">
+    <h1>LITORAL GLOBAL</h1>
+    <p>
+      Independent consulting specialized in international trade.
+      We support companies in import and export processes,
+      providing strategic advisory, market analysis, and operational assistance.
+    </p>
+    <a class="btn" href="#contacto">Contact Us</a>
+
+    <button class="btn-popup" onclick="openPopup()">
+      Expand your business worldwide
+    </button>
+  </header>
+
+  <div class="container">
+
+    <section>
+      <h2>About Us</h2>
+      <p>
+        At Litoral Global, we provide professional solutions for companies seeking to operate in international markets.
+        Our goal is to support every operation with a clear, efficient, and results-oriented approach.
+      </p>
+      <p>
+        We work with SMEs, entrepreneurs, and expanding businesses, offering tailored advisory services for each need.
+      </p>
+    </section>
+
+    <section id="servicios">
+      <h2>Services</h2>
+
+      <div class="services">
+        <div class="card">
+          <h3>Import Advisory</h3>
+          <p>
+            Full process planning: requirements, documentation, costs, logistics, and feasibility analysis.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Export Advisory</h3>
+          <p>
+            International expansion strategy, destination market analysis, procedures, and operational support.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Market Research</h3>
+          <p>
+            Market studies, competition analysis, pricing, distribution channels, and business opportunities.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Tariff Classification</h3>
+          <p>
+            Identification of tariff codes, restrictions, regulations, and specific product requirements.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Cost Evaluation</h3>
+          <p>
+            Import/export cost analysis and simulations to improve decision-making.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Document Management</h3>
+          <p>
+            Preparation and review of commercial, logistics, and customs documentation: invoices, packing lists, certificates.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <section id="proyectos">
+      <h2>Projects & Solutions</h2>
+      <p>
+        At Litoral Global, we design and develop solutions for companies looking to expand internationally.
+        Our approach combines strategic analysis, operational planning, and efficient execution.
+      </p>
+
+      <div class="services">
+
+        <div class="card">
+          <h3>Export Potential Assessment</h3>
+          <p>
+            Comprehensive evaluation of the company, product, and internal capabilities to define real expansion opportunities.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>International Market Research</h3>
+          <p>
+            Analysis of target countries, demand, competition, pricing, distribution channels, and business opportunities.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Cost and Profitability Evaluation</h3>
+          <p>
+            Simulation of export/import costs, tariffs, logistics, and margins for secure decision-making.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Logistics Planning & Documentation</h3>
+          <p>
+            Support with documentation processes, logistics coordination, and optimization of international procedures.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Commercial Entry Strategy</h3>
+          <p>
+            Definition of an international business strategy, customer segmentation, and market entry model.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Support for SMEs and Entrepreneurs</h3>
+          <p>
+            Personalized support for early-stage companies seeking to professionalize their international operations.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="cta-box">
+        <h3>Ready to expand?</h3>
+        <p>Request a free preliminary evaluation and let’s define the most efficient path together.</p>
+
+        <a class="btn-evaluacion" href="mailto:GlobalLitoralArg@gmail.com?subject=Free%20Project%20Evaluation%20-%20Litoral%20Global">
+          Request a free preliminary evaluation
+        </a>
+      </div>
+
+    </section>
+    
+    <section id="valores">
+      <h2>Values</h2>
+
+      <div class="values">
+        <div class="value-box">
+          <h3>Professionalism</h3>
+          <p>Clear, responsible advisory focused on safe and effective operations.</p>
+        </div>
+
+        <div class="value-box">
+          <h3>Transparency</h3>
+          <p>Accurate information, direct communication, and trust in every process.</p>
+        </div>
+
+        <div class="value-box">
+          <h3>Efficiency</h3>
+          <p>Optimization of costs and timelines to achieve concrete results.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contact</h2>
+
+      <div class="contact-box">
+        <p><span class="highlight">Email:</span> GlobalLitoralArg@gmail.com</p>
+        <p><span class="highlight">WhatsApp:</span> +54 9 3364 532111 // +54 9 341 214 7341</p>
+
+        <p><span class="highlight">LinkedIn:</span>
+          <a class="linkedin-link" href="https://linkedin.com/company/litoral-global" target="_blank">
+            linkedin.com/company/litoral-global
+          </a>
+        </p>
+
+        <a class="linkedin-btn" href="https://linkedin.com/company/litoral-global" target="_blank">
+          Visit LinkedIn
+        </a>
+
+        <p><span class="highlight">Location:</span> Rosario, Argentina (remote and international service)</p>
+        <p><span class="highlight">Business Hours:</span> Monday to Friday - 9:00 AM to 6:00 PM</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2026 - Litoral Global | International Trade Consulting
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank">
+    WhatsApp
+  </a>
+
+  <div id="popup" class="popup-overlay">
+    <div class="popup-content">
+      <span class="popup-close" onclick="closePopup()">&times;</span>
+
+      <h2>Expand your business efficiently</h2>
+      <p>
+        At <b>Litoral Global</b>, we help companies expand into international markets with a strategic,
+        operational, and results-oriented approach.
+      </p>
+
+      <div class="popup-grid">
+        <div class="popup-card">
+          <h3>Initial Assessment</h3>
+          <p>We evaluate your company, product, and international potential to define a realistic path.</p>
+        </div>
+
+        <div class="popup-card">
+          <h3>Target Market Selection</h3>
+          <p>We analyze target countries, demand, competition, and entry requirements.</p>
+        </div>
+
+        <div class="popup-card">
+          <h3>Commercial Strategy</h3>
+          <p>We define channels, pricing, and a business model adapted to your industry.</p>
+        </div>
+
+        <div class="popup-card">
+          <h3>Operational Management</h3>
+          <p>Documentation, international logistics, costs, and full support throughout the process.</p>
+        </div>
+
+        <div class="popup-card">
+          <h3>Risk Reduction</h3>
+          <p>Cost simulations and control of key variables to avoid mistakes and losses.</p>
+        </div>
+
+        <div class="popup-card">
+          <h3>Continuous Follow-Up</h3>
+          <p>Ongoing support to achieve sustainable and efficient expansion.</p>
+        </div>
+      </div>
+
+      <a class="popup-email" href="mailto:GlobalLitoralArg@gmail.com?subject=Inquiry%20-%20Litoral%20Global">
+        Contact by Email
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      let popup = document.getElementById("popup");
+      if (event.target === popup) {
+        popup.style.display = "none";
+      }
+    }
+  </script>
+  
+</body>
+</html>
